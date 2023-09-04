@@ -1,0 +1,17 @@
+{% extends 'garage/base.html' %}
+
+{% block title %}
+<H3> PARAMETRE DU SITE </H3>
+
+{% endblock %}
+{% block main  %}
+
+<div class="col-lg-8 px-4">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+    </form>    
+</div>
+
+{% endblock %}

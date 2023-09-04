@@ -1,0 +1,18 @@
+{% extends 'garage/base.html' %}
+
+{% block title %}
+
+Temoignage des clients 
+{% endblock %}
+
+{% block main  %}
+<div class="title">
+
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Ajouter Temoignage</button>
+      </form>
+
+{% endblock %}

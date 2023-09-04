@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+	<meta charset="utf-8">
+	<title></title>
+	
+	<!-- Google Fonts -->
+	
+	<!-- Template Styles -->
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+	
+	<!-- CSS Reset -->
+	<link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+	
+	<!-- Milligram CSS minified -->
+	<link rel="stylesheet" href="{% static 'css/milligram.min.css'%}">
+	
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="{% static 'css/styles-admin.css'%}">
+	
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="navbar">
+		<div class="row">
+			<div class="column column-30 col-site-title"><a href="#" class="site-title float-left"><img src="{{site_info.logo.url}}" style="width: 150px;"></a></div>
+			<div class="column column-40 col-search"><a href="#" class="search-btn fa fa-search"></a>
+				<input type="text" name="" value="" placeholder="Search..." />
+			</div>
+			<div class="column column-30">
+				<div class="user-section"><a href="#">
+					<img src="http://via.placeholder.com/50x50" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+					<div class="username">
+						<h4>{{user.username}}</h4>
+						{% if user.is_superuser %}
+						<p>Administrateur</p>
+						{% else %}
+						<p> Employer </p>
+						{% endif %}
+					</div>
+				</a></div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div id="sidebar" class="column pt-3 bg-primary">
+			<br><br><br>
+			{% if user.is_superuser %}
+			<ul>
+				<li><a href="#"><em class="fa fa-home"></em> Accueil</a></li>
+				<li><a href="/listes-voiture"><em class="fa fa-list"></em> Listes voiture</a></li>
+				<li><a href="/add-car"><em class="fa fa-car"></em> Ajouter une voiture</a></li>
+	
+				<li><a href="/service"><em class="fa  fa-wrench"></em> Ajouter un service</a></li>
+				<li><a href="/ajouter-employer"><em class="fa fa-plus"></em> Membre du personnel</a></li>
+				<li><a href="/ajouter-temoinage"><em class="fa fa-users"></em> Témoignages clients</a></li>
+				<li><a href="#inventory"><em class="fa fa-list"></em> Inventaire des Voitures</a></li>
+				<li><a href="#sales"><em class="fa fa-dollar"></em> Suivi des Ventes</a></li>
+				<li><a href="#reports"><em class="fa fa-bar-chart"></em> Rapports de Vente</a></li>
+				<li><a href="/setting"><em class="fa fa-cogs"></em> Paramètres</a></li>
+		
+			
+			</ul>
+
+		{% elif user.is_staff %}
+			
+		<ul>
+			<li><a href="#"><em class="fa fa-home"></em> Accueil</a></li>
+			<li><a href="/listes-voiture"><em class="fa fa-list"></em> Listes voiture</a></li>
+			<li><a href="/add-car"><em class="fa fa-car"></em> Ajouter une voiture</a></li>
+
+			<li><a href="/service"><em class="fa  fa-wrench"></em> Ajouter un service</a></li>
+			<li><a href="/ajouter-temoinage"><em class="fa fa-users"></em> Témoignages clients</a></li>
+			<li><a href="#inventory"><em class="fa fa-list"></em> Inventaire des Voitures</a></li>
+			<li><a href="#sales"><em class="fa fa-dollar"></em> Suivi des Ventes</a></li>
+			<li><a href="#reports"><em class="fa fa-bar-chart"></em> Rapports de Vente</a></li>
+			<li><a href="/setting"><em class="fa fa-cogs"></em> Paramètres</a></li>
+	
+		
+		</ul>
+
+		{% endif %}
+		
+
+
+			
+		</div>
+		<section id="main-content" class="column column-offset-20">
+			<div class="row grid-responsive">
+				<div class="column page-heading">
+					<div class="large-card">
+						{% block title %} {% endblock %}
+					</div>
+
+                    {% block main %} {% endblock %}
+				</div>
+			</div>
+
+			
+			
+</body>
+</html> 

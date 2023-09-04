@@ -1,0 +1,36 @@
+{% extends 'garage/base.html' %}
+
+{% block title %}
+Tableau Bord 
+{% endblock %}
+
+{% block main  %}
+<div class="title">
+    <h3>Listes des voitures </h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Model</th>
+        <th scope="col">Date</th>
+        <th scope="col">Price</th>
+        <th scope="col">Kilometers</th>
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for car in cars %}
+      <tr>
+        <th scope="row">{{car.id}}</th>
+        <td>{{car.name}}</td>
+        <td>{{car.annee}}</td>
+        <td> $ {{car.prix}}</td>
+        <td>{{car.kilometres}} km</td>
+        <td> <i class="fa fa-edit fa-2x"></i> <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>  
+  
+{% endblock %}

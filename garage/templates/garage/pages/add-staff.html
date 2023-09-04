@@ -1,0 +1,41 @@
+{% extends 'garage/base.html' %}
+
+{% block title %}
+<h3>Ajouter un membre   </h3>
+{% endblock %}
+
+{% block main  %}
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<div class="title">
+
+
+    <form method="post">
+   {% csrf_token %}
+        {{ form.first_name.label_tag }} {# Render only the label tag separately #}
+        {{ form.first_name }}
+
+        {{ form.last_name.label_tag }} {# Render only the label tag separately #}
+        {{ form.last_name }}
+
+        {{ form.username.label_tag }} {# Render only the label tag separately #}
+        {{ form.username }}
+        
+        {{ form.password1.label_tag }} {# Render only the label tag separately #}
+        {{ form.password1 }}
+        
+        {{ form.password2.label_tag }} {# Render only the label tag separately #}
+        {{ form.password2 }}
+        <br>
+        <button type="submit">CREER UN MEMBRE</button>
+      </form>
+    
+
+  
+{% endblock %}

@@ -1,0 +1,61 @@
+
+body {
+    background: white;
+    position: relative;
+    height: 100vh;
+    font-family: 'Rajdhani', sans-serif;
+
+}
+
+
+
+.container {
+        width: 40%;
+margin: 0 auto;
+background: #d92332;
+border-radius: 10px;
+position: absolute;
+top: 50%;
+z-index: 2;
+color: #fff;
+content: '';
+padding: 20px;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+
+.form--user__icon {
+          border-radius: 50%;
+height: 100px;
+z-index: 9;
+top: -50px;
+text-align: center;
+left: 50%;
+transform: translate(-50%, 0);
+position: absolute;
+background: #ea7a1a;
+width: 100px;
+color: #fff;
+}
+
+button {
+
+width: 100%;
+color:#fff !important;
+border-radius: 50px !important;
+border: 0 !important;
+background: #003296 !important;
+}
+
+.container h4 {
+    margin-top: 32px;
+}
+form a{
+color:#fff !important;
+text-decoration:underline !important;
+}
+
+.center {
+    text-align: center;
+}

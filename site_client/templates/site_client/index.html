@@ -1,0 +1,212 @@
+{% extends 'site_client/bin/base.html' %}
+{% load static %}
+{% block main %}
+
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for  s in slider %}
+    <div class="carousel-item {% if forloop.first %}active{% endif %}" style="background-image: url('{{ s.image.url }}');">
+      <div class="carousel-caption">
+        <h2 class="py-2">{{ s.caption }}</h2>
+        <p></p>
+        <a href="#" class="btn btn-secondary">En savoir plus</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Précédent</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Suivant</span>
+  </a>
+</div>
+
+    <div class="container my-5">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="about-section">
+              <div class="about-content">
+                <div class="about-image">
+                  <img src="{% static 'img/about.jpg'%}" alt="About Image" class="img-fluid rounded">
+                </div>
+                <div class="about-text">
+                  <h2>About Us</h2>
+                  <p>We are a dedicated team of professionals providing top-notch car repair services. Our goal is to ensure your vehicle's optimal performance and safety.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+
+      <div class="container my-3">
+
+        <h2 class="text-center text-uppercase">Nos Services </h2>
+        <div class="service-divider"></div>
+
+         <p class="text-center"> Description de nos services </p>
+        <div class="row">
+          {% for service in services %}
+          <div class="col-lg-4 mb-3">
+            <div class="service-card rounded" onclick="location.href='#';">
+              <div class="service-section text-center">
+                <i class="fas {{service.icon_service }} service-icon"></i>
+                <h2 class="service-title">{{service.nom_service}}</h2>
+                <p class="service-description">{{service.description}}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          </div>
+      </div>
+
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="filter-form">
+              <h3><i class="fa fa-filter-alt" aria-hidden="true"></i> Filters</h3>
+              <form class="d-flex justify-content-between align-items-center">
+                <div class="mb-3">
+                  <label for="priceRange" class="form-label">Price Range</label><br>
+                  <input type="range" class="form-range" min="1000" max="50000" step="1000" id="priceRange">
+                  <p>1000 $ - 50000$ </p>
+
+                </div>
+                <div class="mb-3">
+                  <label for="kmRange" class="form-label">Kilometers Range</label><br>
+                  <input type="range" class="form-range" min="0" max="100000" step="1000" id="kmRange">
+                  <p> 10 000 KM - 18 000 KM</p>
+
+                </div>
+                <div class="mb-3">
+                    <label for="kmRange" class="form-label">Annee </label><br>
+                    <input type="range" class="form-range" min="1990" max="2023" step="2019" id="kmRange">
+                    <p> 2010 - 2023 </p>
+  
+                  </div>
+                <button type="submit" class="btn btn-secondary">Apply Filters</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="container">
+            <div class="col-lg-12">
+                <div class="card-transparent bg-white rounded mb-4">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="heading-title">Upcoming Models</h5>
+                            <span class="text-primary"> View More</span>
+                        </div>
+                    </div>
+                    <div class="container card-header swiper-container d-slider2">
+                        <div class="row swiper-wrapper">
+                            {% for car in cars %}
+                            <div class="col-md-3 col-md-3 swiper-slide">
+                                <div class="iq-upcoming-cars">
+                                    <img src="{{car.image.url }}" class="img-fluid w-100" alt="img8">
+                                    <div class="iq-car-details">
+                                        <h6 class="text-primary">{{ car.annee }} {{ car.marque }} {{ car.modele }}</h6>
+                                        <div class="d-flex justify-content-end">
+                                            {% for _ in "1234" %}
+                                            <svg width="18" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <!-- Code SVG ici -->
+                                            </svg>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="iq-car-name">
+                                        <h6>{{ car.name }}</h6>
+                                    </div>
+                                    <div class="iq-car-price d-flex justify-content-between align-items-center">
+                                        <span>Price</span>
+                                        <h6>${{ car.prix }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        
+          
+        </div>
+      </div>
+  
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="testimonial-section">
+              <h2 class="text-center mb-5 text-uppercase">Client Testimonials</h2>
+              <div class="row">
+                {% for test in testimonials %}
+                <div class="col-md-4">
+                  <div class="testimonial-card">
+                    <img src="{{ test.avatar_image.url }}" alt="Client 1" class="testimonial-avatar">
+                    <p class="testimonial-name">{{test.nom_client}}</p>
+                    <p class="testimonial-text">"{{test.temoinages_content}}"</p>
+                  </div>
+                </div>
+                {% endfor %}
+                
+                <!-- Add more testimonial cards here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="container">
+        <div class="contact-section">
+            <h2 class="text-center mb-5">Contact Us</h2>
+        <div class="row">
+          <div class="col-md-5 contact-details">
+            <h4>Contact Details</h4>
+            <p><strong>Address:</strong> 123 Main Street, City, Country</p>
+            <p><strong>Email:</strong> info@example.com</p>
+            <p><strong>Phone:</strong> +123-456-7890</p>
+            <h4>Opening Hours</h4>
+            <ul class="list-unstyled">
+              <li><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</li>
+              <li><strong>Saturday:</strong> 10:00 AM - 4:00 PM</li>
+              <li><strong>Sunday:</strong> Closed</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            
+              <div class="contact-form">
+                <h4>Contact Form</h4>
+                <form>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="number" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="number" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-secondary"> <i class="fa fa-envelope mr-2" aria-hidden="true"></i> Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  {% endblock %}

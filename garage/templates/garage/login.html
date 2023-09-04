@@ -1,0 +1,107 @@
+
+<html lang="en">
+
+<head>
+    <title>Connexion </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400&display=swap');
+
+        body {
+            background: white;
+            position: relative;
+            height: 100vh;
+            font-family: 'Rajdhani', sans-serif;
+
+        }
+        
+       
+        
+        .container {
+                width: 40%;
+    margin: 0 auto;
+    background: #d92332;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    color: #fff;
+    content: '';
+    padding: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+        }
+        
+        
+        .form--user__icon {
+                  border-radius: 50%;
+    height: 100px;
+    z-index: 9;
+    top: -50px;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+    position: absolute;
+    background: #ea7a1a;
+    width: 100px;
+    color: #fff;
+        }
+        
+        button {
+
+     width: 100%;
+     color:#fff !important;
+    border-radius: 50px !important;
+    border: 0 !important;
+    background: #003296 !important;
+        }
+        
+        .container h4 {
+            margin-top: 32px;
+        }
+        form a{
+        color:#fff !important;
+        text-decoration:underline !important;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+
+    <div class="center">
+        <img src="{{site_info.logo.url}}" alt="logo" width="100px">
+    </div>
+    <div class="container">
+        
+        <h4 class="text-center">Page de connexion </h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% if error_message %}
+
+            <div class="alert alert-danger" role="alert">
+                <p>{{ error_message }}</p>
+            </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="email"> <span class="glyphicon glyphicon-user"></span> Login:</label>
+                <input type="text" class="form-control" name="username" placeholder="Entrez votre login" >
+            </div>
+            <div class="form-group">
+                <label for="pwd"> <span class="glyphicon glyphicon-lock"></span> Mot de passe:</label>
+                <input type="password" class="form-control" name="password" placeholder="Entrez le mot de passe" name="pwd">
+            </div>
+            <button type="submit" class="btn btn-default" style="background-color:#252626!important;">Connexion</button>
+        </form>
+    </div>
+
+</body>
+

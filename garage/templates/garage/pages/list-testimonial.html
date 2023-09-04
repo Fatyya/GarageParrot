@@ -1,0 +1,35 @@
+{% extends 'garage/base.html' %}
+
+{% block title %}
+
+Temoignages des clients 
+{% endblock %}
+
+{% block main  %}
+<div class="title">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nomdu client</th>
+        <th scope="col">Temoignages</th>
+        <th scope="col">Images du client </th>
+        <th scope="col">Action </th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for test in tests %}
+      <tr>
+        <th scope="row">{{test.id}}</th>
+        <td>{{test.nom_client}}</td>
+        <td>{{test.temoinages_content}}</td>
+        <td><img src="{{test.avatar_image.url}}" class="rounded-circle img-thumbnail" style="width: 50px; height: 50px;"></td>
+        <td> <i class="fa fa-edit"></i> <i class="fa fa-eye" aria-hidden="true"></i>
+ 
+      </tr>
+        {% endfor %}
+    </tbody>
+</table>  
+  
+{% endblock %}

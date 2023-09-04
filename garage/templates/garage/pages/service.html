@@ -1,0 +1,45 @@
+{% extends 'garage/base.html' %}
+
+{% block title %}
+Tableau Bord 
+{% endblock %}
+
+{% block main  %}
+
+
+
+
+<div class="col-lg-8 px-4">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+    </form>    
+</div>
+
+<div class="title">
+    <h3>Listes des services </h3>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titre du service</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for service in services %}
+      <tr>
+        <th scope="row">{{service.id}}</th>
+        <td>{{service.nom_service}}</td>
+        <td>{{service.description}}</td>
+        <td> <i class="fa fa-edit mr-1"></i> <i class="fa fa-eye  mr-1" aria-hidden="true"></i><i class="fa fa-trash mr-2" aria-hidden="true"></i>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>  
+  
+{% endblock %}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!--Font style -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS -->
+
+    <link
+    rel="stylesheet"
+    href="{% static 'css/styles.css' %}"
+  />
+
+    <title>{{site_info.nom_site}} - Accueil</title>
+  </head>
+  <body>
+    <nav class="top-navbar  navbar-expand-md py-2 bg-dark">
+      <div class="container d-flex justify-content-between align-items-center py-2">
+        <div class="contact-info">
+          <span><i class="fas fa-phone"></i> {{site_info.numero_telephone}}</span>
+          <span class="mx-2"><i class="fas fa-envelope"></i> {{site_info.email}}</span>
+        </div>
+       
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook text-light"></i></a>
+          <a href="#"><i class="fab fa-youtube text-light"></i></a>
+          <a href="#"><i class="fab fa-twitter text-light"></i></a>
+          <a href="#"><i class="fab fa-instagram text-light"></i></a>
+        </div>
+      </div>
+    </nav>
+    
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="{{site_info.logo.url}}" alt="Logo" class="logo-image"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#" style="color:#d92332;" class="active">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color:#d92332;">Nos Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color:#d92332;">Voitures</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color:#d92332;">A propos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color:#d92332;">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color:#d92332;"><i class="fas fa-search" style="color: white; font-size: 16px;"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+{% block main %} {% endblock %}
+
+
+
+
+<footer class="footer py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <img src="{{site_info.logo.url}}" alt="Logo" class="footer-logo">
+          <p class="footer-info">{{site_info.description}}</p>
+        </div>
+        <div class="col-md-3">
+          <h4>Site Map</h4>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            {% for service in services %}
+            <li><a href="#">{{service.nom_service}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h4>Contact Us</h4>
+          <p class="footer-address">
+            {{site_info.adress}}<br>
+            Email: {{site_info.email}}<br>
+            Phone: {{site_info.numero_telephone}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+          <ul class="social-icons">
+            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+          <p class="terms-policy">
+            &copy; 2023 {{site_info.nom_site}} . All rights reserved. | <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  
+  </body>
+  </html>
+  
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+{% extends 'garage/base.html' %}
+
+{% block title %}
+<h3>Ajouter une voitures  </h3>
+{% endblock %}
+
+{% block main  %}
+<div class="title">
+
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Ajouter une voiture </button>
+    </form>
+
+  
+{% endblock %}
